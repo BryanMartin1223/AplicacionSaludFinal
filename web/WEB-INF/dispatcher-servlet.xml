@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+    <!--
+    Most controllers will use the ControllerClassNameHandlerMapping above, but
+    for the index controller we are using ParameterizableViewController, so we must
+    define an explicit mapping for it.
+    -->
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="index.htm">controladorLogin</prop>
+                <prop key="/Especialidad/listar.htm">controladorEspecialidad</prop>
+                <prop key="/Especialidad/agregar.htm">controladorEspecialidad</prop>
+                <prop key="/Especialidad/editar.htm">controladorEspecialidad</prop>
+                <prop key="/Especialidad/eliminar.htm">controladorEspecialidad</prop>
+                <prop key="/Turno/listar.htm">controladorTurno</prop>
+                <prop key="/Turno/agregar.htm">controladorTurno</prop>
+                <prop key="/Turno/editar.htm">controladorTurno</prop>
+                <prop key="/Turno/eliminar.htm">controladorTurno</prop>
+                <prop key="/Horario/listar.htm">controladorHorario</prop>
+                <prop key="/Horario/agregar.htm">controladorHorario</prop>
+                <prop key="/Horario/editar.htm">controladorHorario</prop>
+                <prop key="/Horario/eliminar.htm">controladorHorario</prop>
+                <prop key="/Paciente/listar.htm">controladorPaciente</prop>
+                <prop key="/Paciente/agregar.htm">controladorPaciente</prop>
+                <prop key="/Paciente/editar.htm">controladorPaciente</prop>
+                <prop key="/Paciente/eliminar.htm">controladorPaciente</prop>
+                <prop key="/Doctor/listar.htm">controladorDoctor</prop>
+                <prop key="/Doctor/agregar.htm">controladorDoctor</prop>
+                <prop key="/Doctor/editar.htm">controladorDoctor</prop>
+                <prop key="/Doctor/eliminar.htm">controladorDoctor</prop>
+                <prop key="/Cita/listar.htm">controladorCita</prop>
+                <prop key="/Cita/agregar.htm">controladorCita</prop>
+                <prop key="/Cita/editar.htm">controladorCita</prop>
+                <prop key="/Cita/eliminar.htm">controladorCita</prop> 
+            </props>
+        </property>
+    </bean>
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+
+    <bean name="controladorLogin" class="Controller.ControllerLogin" />
+    <bean name="controladorEspecialidad" class="Controller.ControllerEspecialidad" />
+    <bean name="controladorTurno" class="Controller.ControllerTurno" />
+    <bean name="controladorHorario" class="Controller.ControllerHorario" />
+    <bean name="controladorPaciente" class="Controller.ControllerPaciente" />
+    <bean name="controladorDoctor" class="Controller.ControllerDoctor" />
+    <bean name="controladorCita" class="Controller.ControllerCita" />
+</beans>
